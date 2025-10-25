@@ -1,38 +1,99 @@
-<script setup lang="ts">
-import CategoryItem from './CategoryItem.vue';
-
-// Sample data structure for the categories (You would usually fetch this)
-const categories = [
-  { id: 1, name: 'Coke & Milk', count: 143, imageSrc: '...', bgColor: '#fcf6f0' },
-  { id: 2, name: 'Peach', count: 17, imageSrc: '...', bgColor: '#fff0e5' },
-  // ... rest of the 10 items
-];
-</script>
-
 <template>
-  <section class="category-grid-section">
-    <div class="grid-container">
-      <CategoryItem
-        v-for="cat in categories"
-        :key="cat.id"
-        :name="cat.name"
-        :count="cat.count"
-        :image-src="cat.imageSrc"
-        :bg-color="cat.bgColor"
-      />
+  <section class="category-grid-container">
+    <div class="categories-wrapper">
+      <div
+        v-for="category in categories"
+        :key="category.name"
+        class="category-item"
+        :style="{ backgroundColor: category.bgColor }"
+      >
+        <div class="icon-box">
+          <img :src="category.image" :alt="category.name" class="category-icon" />
+        </div>
+        <p class="category-name">{{ category.name }}</p>
+        <p class="item-count">{{ category.count }} items</p>
+      </div>
     </div>
   </section>
 </template>
 
-<style scoped>
-.category-grid-section {
-  margin-bottom: 40px;
-}
+<script setup lang="ts">
+import { ref } from 'vue'
 
-.grid-container {
+// Data definition with image paths and desired background colors
+const categories = ref([
+  { name: 'Cake & Milk', count: 14, image: '/images/burger.png', bgColor: '#F2FCE4' },
+  { name: 'Peach', count: 17, image: '/images/peach.png', bgColor: '#FFFCEB' },
+  { name: 'Organic Kiwi', count: 23, image: '/images/kiwi.png', bgColor: '#ECFFEC' },
+  { name: 'Red Apple', count: 68, image: '/images/apple.png', bgColor: '#FEEFEA' },
+  { name: 'Snack', count: 34, image: '/images/cakeandmilk.png', bgColor: '#FFF3EB' },
+  { name: 'Black plum', count: 29, image: '/images/bluberries.png', bgColor: '#FFF3FF' },
+  { name: 'Vegetables', count: 15, image: '/images/cabbage.png', bgColor: '#F2FCE4' },
+  { name: 'Headphone', count: 18, image: '/images/headphone.png', bgColor: '#FFFCEB' },
+  { name: 'Cake & Milk', count: 34, image: '/images/cakeandmilk.png', bgColor: '#F2FCE4' },
+  { name: 'Orange', count: 63, image: '/images/orange.png', bgColor: '#FFF3FF' },
+])
+</script>
+
+<style scoped>
+.category-grid-container {
+  padding: 30px 0;
+}
+.categories-wrapper {
   display: grid;
-  /* Adjust grid-template-columns for different screen sizes */
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 1. Styling for the individual card (gets the dynamic background color) */
+.category-item {
+  text-align: center;
+  padding: 20px 5px;
+  /* Background color is dynamic via :style binding */
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+  height: 100%;
+}
+.category-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-color: #34c034;
+}
+
+/* 2. Styling for the icon box (The inner WHITE circle) */
+.icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    overflow: hidden;
+}
+
+.category-icon {
+    /* Scale image to fit inside the white circle */
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+/* 3. Text Styling */
+.category-name {
+    font-size: 1em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 3px;
+    line-height: 1.2;
+}
+
+.item-count {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
 }
 </style>
