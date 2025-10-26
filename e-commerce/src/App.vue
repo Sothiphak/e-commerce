@@ -17,7 +17,7 @@ import PromoBanner from './components/PromoBanner.vue';
           <a href="#" class="shop-btn green-btn">Shop Now →</a>
         </template>
         <template #image>
-          <img src="/images/onion.jpg" alt="Fresh Onions" class="banner-img" />
+          <img src="/images/onion.jpg" alt="Fresh Onions" class="banner-imgg" />
         </template>
       </PromoBanner>
 
@@ -41,7 +41,7 @@ import PromoBanner from './components/PromoBanner.vue';
           <a href="#" class="shop-btn orange-btn">Shop Now →</a>
         </template>
         <template #image>
-          <img src="/images/vegetables.jpg" alt="Organic Products" class="banner-img" />
+          <img src="/images/vegetables.jpg" alt="Organic Products" class="banner-imgg" />
         </template>
       </PromoBanner>
 
@@ -62,13 +62,13 @@ import PromoBanner from './components/PromoBanner.vue';
   margin: 30px auto;
 }
 
-/* 💡 CRITICAL: Text and Heading Styling for contrast and size */
+/* Text and Heading Styling */
 .banner-heading {
-    font-size: 1.8em; /* Large heading size */
-    font-weight: 700; /* Bold */
+    font-size: 1.8em;
+    font-weight: 700;
     line-height: 1.2;
     margin-bottom: 20px;
-    color: #333; /* Dark text color for high contrast */
+    color: #333;
 }
 
 /* Custom Background Colors */
@@ -82,37 +82,38 @@ import PromoBanner from './components/PromoBanner.vue';
     background-color: #E7EAF3;
 }
 
-/* 💡 CRITICAL: Button Styling */
+/* Button Styling */
 .shop-btn {
     display: inline-block;
     padding: 10px 18px;
     color: white;
     text-decoration: none;
     border-radius: 4px;
-    font-weight: 700; /* Make button text bold */
+    font-weight: 700;
     transition: background-color 0.3s;
 }
 
 .shop-btn.green-btn {
-    background-color: #49c470; /* The clean green color */
+    background-color: #49c470;
 }
 
 .shop-btn.orange-btn {
-    background-color: #ffa500; /* The vibrant orange color */
-}
-
-/* Ensure the image classes are correctly mapped from the original code */
-.shop-btn.orange {
-    /* REMOVE this if you use orange-btn class. */
-    /* Keeping it for backward compatibility but using orange-btn above */
     background-color: #ffa500;
 }
-
 
 /* Image scaling for banners */
 .banner-img {
     height: auto;
     display: block;
+    max-width: 100%;
+}
+
+.banner-imgg {
+    height: auto;
+    display: block;
+    max-width: 400px;
+    padding-right: 110px;
+    padding-top: 80px;
 }
 
 /* Responsiveness */
