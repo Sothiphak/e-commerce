@@ -26,10 +26,10 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  height: 250px; /* 💡 NEW: Set a consistent height for the card */
+  height: 250px; /* 庁 NEW: Set a consistent height for the card */
 }
 
-/* 💡 TWEAK: Adjusted width for a more focused text area */
+/* 庁 TWEAK: Adjusted width for a more focused text area */
 .text-and-button-area {
   max-width: 60%;
   padding-right: 15px;
@@ -48,18 +48,18 @@
     overflow: hidden;
 }
 
-/* 💡 CRITICAL FIX: Standardize the image size and ensure it's pushed to the bottom/right */
+/* 庁 CRITICAL FIX: Standardize the image size and ensure it's pushed to the bottom/right */
 .image-area :deep(.banner-img) {
     /* Standardize the size for all images */
     width: auto;
     max-width: 100%;
-    /* 💡 NEW: The height constraint makes them look uniform */
+    /* 庁 NEW: The height constraint makes them look uniform */
     max-height: 180px;
     height: auto;
     display: block;
     object-fit: contain;
 
-    /* 💡 NEW: Add positioning to push the image to the bottom-right corner */
+    /* 庁 NEW: Add positioning to push the image to the bottom-right corner */
     align-self: flex-end; /* Aligns the image itself to the bottom-right within the flex container */
 }
 
@@ -82,7 +82,7 @@
     }
     .image-area :deep(.banner-img) {
         max-height: 120px;
-        align-self: center; /* Center image on mobile */
+        align-self: center;
     }
 }
 </style>

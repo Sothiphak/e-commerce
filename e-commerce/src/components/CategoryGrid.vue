@@ -77,8 +77,8 @@ const categories = ref([
 
 .category-icon {
     /* Scale image to fit inside the white circle */
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 110%;
+    max-height: 110%;
     object-fit: contain;
 }
 
