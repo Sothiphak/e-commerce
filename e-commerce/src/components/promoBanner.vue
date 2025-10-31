@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-// No specific logic needed for this component yet
 </script>
 
 <style scoped>
@@ -20,55 +19,43 @@
   max-width: 100%;
   padding: 40px 25px;
   border-radius: 10px;
-
-  /* Layout: Text/Button and Image side-by-side */
   display: flex;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  height: 250px; /* 庁 NEW: Set a consistent height for the card */
+  height: 250px;
 }
 
-/* 庁 TWEAK: Adjusted width for a more focused text area */
 .text-and-button-area {
   max-width: 60%;
   padding-right: 15px;
 }
 
 .image-area {
-    /* Set alignment properties to push content to the bottom */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Pushes image to the bottom */
-    align-items: center; /* Centers image horizontally */
-
-    /* Give the image area the remaining space */
+    justify-content: flex-end;
+    align-items: center;
     flex-shrink: 0;
-    max-width: 40%; /* Limited to 40% */
+    max-width: 40%;
     overflow: hidden;
 }
 
-/* 庁 CRITICAL FIX: Standardize the image size and ensure it's pushed to the bottom/right */
 .image-area :deep(.banner-img) {
-    /* Standardize the size for all images */
     width: auto;
     max-width: 100%;
-    /* 庁 NEW: The height constraint makes them look uniform */
     max-height: 180px;
     height: auto;
     display: block;
     object-fit: contain;
-
-    /* 庁 NEW: Add positioning to push the image to the bottom-right corner */
-    align-self: flex-end; /* Aligns the image itself to the bottom-right within the flex container */
+    align-self: flex-end;
 }
 
-/* Small devices optimization */
 @media (max-width: 600px) {
     .promo-banner-card {
         flex-direction: column;
         text-align: center;
-        height: auto; /* Reset height on mobile */
+        height: auto;
     }
     .text-and-button-area {
         max-width: 100%;

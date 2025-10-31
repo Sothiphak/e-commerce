@@ -20,7 +20,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-// Data definition with image paths and desired background colors
 const categories = ref([
   { name: 'Cake & Milk', count: 14, image: '/images/burger.png', bgColor: '#F2FCE4' },
   { name: 'Peach', count: 17, image: '/images/peach.png', bgColor: '#FFFCEB' },
@@ -47,11 +46,9 @@ const categories = ref([
   margin: 0 auto;
 }
 
-/* 1. Styling for the individual card (gets the dynamic background color) */
 .category-item {
   text-align: center;
   padding: 20px 5px;
-  /* Background color is dynamic via :style binding */
   border: 1px solid #f0f0f0;
   border-radius: 10px;
   transition: all 0.3s;
@@ -63,7 +60,6 @@ const categories = ref([
     border-color: #34c034;
 }
 
-/* 2. Styling for the icon box (The inner WHITE circle) */
 .icon-box {
     display: flex;
     justify-content: center;
@@ -76,13 +72,11 @@ const categories = ref([
 }
 
 .category-icon {
-    /* Scale image to fit inside the white circle */
     max-width: 110%;
     max-height: 110%;
     object-fit: contain;
 }
 
-/* 3. Text Styling */
 .category-name {
     font-size: 1em;
     font-weight: 700;
