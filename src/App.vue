@@ -4,7 +4,6 @@ import axios from 'axios';
 import CategoryGrid from './components/CategoryGrid.vue';
 import PromoBanner from './components/promoBanner.vue';
 
-// --- Data Types (for TypeScript) ---
 interface Category {
   name: string;
   count: number;
@@ -21,7 +20,6 @@ interface Promotion {
   url: string;
 }
 
-//static fallback data
 const STATIC_CATEGORIES: Category[] = [
   { name: "Peach", count: 17, bgColor: "#FEFBE8", image: "/images/peach.png" },
   { name: "Red Apple", count: 68, bgColor: "#FFF0E9", image: "/images/apple.png" },
@@ -29,7 +27,6 @@ const STATIC_CATEGORIES: Category[] = [
   { name: "Organic Kiwi", count: 23, bgColor: "#ECFFEC", image: "/images/kiwi.png" },
   { name: "Black Plum", count: 29, bgColor: "#FFF3FF", image: "/images/bluberries.png" },
   { name: "Vegetables", count: 15, bgColor: "#F2FCE4", image: "/images/cabbage.png" },
-  // --- ADDED FOUR MORE ITEMS ---
   { name: 'Cake & Milk', count: 14, bgColor: '#F2FCE4', image: '/images/burger.png' },
   { name: 'Headphone', count: 18, bgColor: '#FFFCEB', image: '/images/headphone.png' },
   { name: 'Breakfast', count: 34, bgColor: '#FFF3EB', image: '/images/cakeandmilk.png' },
