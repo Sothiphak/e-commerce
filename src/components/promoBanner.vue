@@ -14,14 +14,12 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
-// Define the component's props for dynamic background color
 defineProps<{
   bgColor: string;
 }>();
 </script>
 
 <style scoped>
-/* Styles remain mostly unchanged, removed inline background colors from App.vue by passing them to this component */
 .promo-banner-card {
   max-width: 100%;
   padding: 40px 25px;

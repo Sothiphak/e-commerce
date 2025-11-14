@@ -20,7 +20,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
-// Define the shape of a single category item
 interface Category {
   name: string;
   count: number;
@@ -28,14 +27,12 @@ interface Category {
   bgColor: string;
 }
 
-// Define the component's props
 defineProps<{
   categories: Category[];
 }>();
 </script>
 
 <style scoped>
-/* Styles remain unchanged */
 .category-grid-container {
   padding: 30px 0;
 }
