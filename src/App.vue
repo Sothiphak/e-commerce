@@ -2,7 +2,7 @@
 import { onMounted } from "vue";
 import { useProductStore } from './stores/productStore';
 import CategoryGrid from './components/CategoryGrid.vue';
-import PromoBanner from './components/PromoBanner.vue'; 
+import PromoBanner from './components/PromoBanner.vue';
 
 
 const productStore = useProductStore();
