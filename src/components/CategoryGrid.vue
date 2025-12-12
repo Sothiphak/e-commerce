@@ -1,91 +1,87 @@
 <template>
-  <section class="category-grid-container">
-    <div class="categories-wrapper">
-      <div
-        v-for="category in categories"
-        :key="category.name"
-        class="category-item"
-        :style="{ backgroundColor: category.bgColor }"
-      >
-        <div class="icon-box">
-          <img :src="category.image" :alt="category.name" class="category-icon" />
-        </div>
-        <p class="category-name">{{ category.name }}</p>
-        <p class="item-count">{{ category.count }} items</p>
-      </div>
+    <div :class="{'hasBorder': bordered}" class="card" :style="{ backgroundColor : bgColor}">
+        <img id="category-image" :src="image" alt="">
+        <p id="category-name">{{ categoryName }}</p>
+        <p id="category-num">{{ num }} items</p>
     </div>
-  </section>
 </template>
 
-<script setup lang="ts">
-import { defineProps } from 'vue';
+<script lang="ts">
+export default {
+    name: 'CategoryGrid',
+    props: {
+        categoryName: {
+            type: String,
+            required: true
+        },
+        num: {
+            type: Number,
+            required: true
+        },
 
-interface Category {
-  name: string;
-  count: number;
-  image: string;
-  bgColor: string;
+        bgColor: {
+            type: String,
+            default: '#ffffff'
+        },
+        image: {
+            type: String,
+            default: ''
+        },
+        bordered: {
+            type: Boolean,
+            default: false
+        }
+    }
 }
-
-defineProps<{
-  categories: Category[];
-}>();
 </script>
 
 <style scoped>
-.category-grid-container {
-  padding: 30px 0;
-}
-.categories-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 15px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    .card {
+        width: 100%;
+        max-width: 145px;
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        background-color: #fcfcfc;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+        border: 1px solid transparent;
 
-.category-item {
-  text-align: center;
-  padding: 20px 5px;
-  border: 1px solid #f0f0f0;
-  border-radius: 10px;
-  transition: all 0.3s;
-  cursor: pointer;
-  height: 100%;
-}
-.category-item:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    border-color: #34c034;
-}
+    }
 
-.icon-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    overflow: hidden;
-}
+    .card:hover {
+        transform: translateY(-3px); /* Subtle lift on hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        border-color: #3BB77E;
+    }
 
-.category-icon {
-    max-width: 110%;
-    max-height: 110%;
-    object-fit: contain;
-}
+    .hasBorder {
+        /* Keep a clean hover effect without a strong internal border */
+        border: 2px solid #3BB77E;
+        box-shadow: 0 0 0 2px #3BB77E, 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    #category-image {
+        /* Adjusted image size to match the spacing of the reference */
+        width: 90px;
+        height: 90px;
+        margin-bottom: 5px;
+    }
+    #category-name {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 700;
+        font-size: 16px; /* Closer to the reference size */
+        color: #253D4E;
+        margin-bottom: 2px;
+    }
 
-.category-name {
-    font-size: 1em;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 3px;
-    line-height: 1.2;
-}
-
-.item-count {
-    font-size: 0.8em;
-    color: #777;
-    margin-top: 5px;
-}
+    #category-num {
+        font-family: 'Lato', sans-serif;
+        font-size: 13px;
+        /* Use the darker gray from the reference image */
+        color: #777777;
+    }
 </style>
