@@ -1,116 +1,139 @@
 <template>
   <div class="full_display">
+
+    <MenuBar menuName="Featured Categories"/>
+
     <div class="category-display">
-      <Category v-for="category in categories" :key="category.name" :image="category.image" :categoryName="category.name" :num="category.productCount" :bgColor="category.color"/>
+      <Category
+        v-for="(category, index) in categories"
+        :key="index"
+        :image="category.image"
+        :categoryName="category.categoryName"
+        :num="category.num"
+        :bgColor="category.bgColor"
+      />
     </div>
 
     <div class="banner_display">
-      <Banner v-for="banner in banners" :key="banner.title" :title="banner.title" :bgColor="banner.color" :bgImage="banner.image" :ButtonbgColor="banner.buttonColor"/>
+      <Banner
+        v-for="(banner, index) in promotions"
+        :key="index"
+        :title="banner.title"
+        :bgColor="banner.bgColor"
+        :bgImage="banner.bannerImage"
+        :ButtonbgColor="banner.ButtonbgColor"
+      />
     </div>
+
+    <MenuBar menuName="Popular Products"/>
+
+    <div class="product_display">
+      <Product
+        v-for="(product, index) in products"
+        :key="index"
+        :name="product.name"
+        :rating="product.rating"
+        :size="product.size"
+        :price="product.price"
+        :promotionAsPercentage="product.promotionAsPercentage"
+        :image="product.image"
+        :clicked="index === 0"
+        :index="index"
+      />
+    </div>
+
   </div>
 </template>
 
 <script lang="ts">
-import Category from './components/CategoryGrid.vue'
-import Banner from './components/PromoBanner.vue'
-import axios from 'axios';
+import { defineComponent, onMounted } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useProductStore } from './stores/productStore';
 
-export default {
+// Components
+import MenuBar from './components/MenuBar.vue';
+import Product from './components/ProductDisplay.vue';
+import Category from './components/CategoryGrid.vue';
+import Banner from './components/PromoBanner.vue';
+
+export default defineComponent({
   name: 'App',
   components: {
+    MenuBar,
+    Product,
     Category,
     Banner
   },
 
-  data() {
+  setup() {
+    const productStore = useProductStore();
+
+    const { categories, promotions, products, groups } = storeToRefs(productStore);
+
+    onMounted(() => {
+      productStore.fetchBanners();
+      productStore.fetchCategories();
+      productStore.fetchGroups();
+      productStore.fetchProducts();
+    });
+
     return {
-      categories: [] as {
-      name: string;
-      productCount: number;
-      color: string;
-      image: string;
-    }[],
-    banners: [] as {
-      title: string;
-      buttonColor: string;
-      color: string;
-      image: string;
-    }[]
-    }
-  },
-
-  methods: {
-    async fetchCategories() {
-      const result = await axios.get("http://localhost:3000/api/categories");
-      this.categories = result.data
-                        .map((cat: any) => ({
-                          name: cat.name,
-                          productCount: cat.productCount,
-                          color: cat.color,
-                          image: `http://localhost:3000/${cat.image.replace(/\\/g, '/')}`
-                        }));
-      console.log(result.data);
-      console.log(this.categories);
-    },
-
-    async fetchBanners() {
-      const result = await axios.get("http://localhost:3000/api/promotions");
-      this.banners = result.data
-                        .map((promo: any) => ({
-                          title: promo.title,
-                          buttonColor: promo.buttonColor,
-                          color: promo.color,
-                          image: `http://localhost:3000/${promo.image.replace(/\\/g, '/')}`
-                        }));
-      console.log(result.data);
-      console.log(this.banners);
-    }
-  },
-
-  mounted() {
-    this.fetchCategories();
-    this.fetchBanners();
+      categories,
+      promotions,
+      products,
+      groups
+    };
   }
-}
+});
 </script>
 
 <style scoped>
-  .full_display {
-    width: 100%;
-    /* Max width for the whole content area for better readability on large screens */
-    max-width: 1400px;
+.full_display {
+    width: 110%;
+    max-width: 1600px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    padding: 20px; /* Overall padding for edges */
-    /* *** ADDED FOR LIGHT BACKGROUND *** */
-    background-color: #f7f8fa; /* Soft, very light gray background */
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #f7f8fa;
     min-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .content-section {
+    width: 110%;
+    display: flex;
+    flex-direction: column;
   }
 
   .category-display {
     width: 110%;
     display: flex;
-    justify-content: center;
-    gap: 24px;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 40px;
+
   }
 
   .banner_display {
     width: 110%;
     display: flex;
-    justify-content: center;
-    margin-top: 75px;
-    margin-bottom: 65px;
+    justify-content: space-between; /* Ensures they spread out */
     gap: 24px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    /* Important: Keeps them in one row on wider screens */
+    flex-direction: row;
   }
 
+  /* PRODUCTS */
   .product_display {
-    width: 100%;
+    width: 110%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
+    justify-content: flex-start;
+    gap: 25px;
+    margin-bottom: 50px;
   }
-
 </style>

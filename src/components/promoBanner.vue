@@ -46,7 +46,7 @@
     .card {
         display: flex;
         justify-content: flex-start;
-        width: 100%;
+        width: 110%;
         max-width: 440px; /* Reduced width to match the aspect ratio in the reference image */
         height: 270px; /* Adjusted height */
         border-radius: 10px;
@@ -56,7 +56,7 @@
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Lighter shadow */
         transition: transform 0.3s ease;
-        
+
 
     }
 

@@ -54,18 +54,16 @@ export default {
     }
 
     .card:hover {
-        transform: translateY(-3px); /* Subtle lift on hover */
+        transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
         border-color: #3BB77E;
     }
 
     .hasBorder {
-        /* Keep a clean hover effect without a strong internal border */
         border: 2px solid #3BB77E;
         box-shadow: 0 0 0 2px #3BB77E, 0 10px 25px rgba(0, 0, 0, 0.1);
     }
     #category-image {
-        /* Adjusted image size to match the spacing of the reference */
         width: 90px;
         height: 90px;
         margin-bottom: 5px;
@@ -73,7 +71,7 @@ export default {
     #category-name {
         font-family: 'Quicksand', sans-serif;
         font-weight: 700;
-        font-size: 16px; /* Closer to the reference size */
+        font-size: 16px;
         color: #253D4E;
         margin-bottom: 2px;
     }
@@ -81,7 +79,6 @@ export default {
     #category-num {
         font-family: 'Lato', sans-serif;
         font-size: 13px;
-        /* Use the darker gray from the reference image */
         color: #777777;
     }
 </style>
