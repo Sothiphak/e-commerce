@@ -1,9 +1,11 @@
 <template>
+  <router-link :to="`/category/${categoryName}`" class="card-link">
     <div :class="{'hasBorder': bordered}" class="card" :style="{ backgroundColor : bgColor}">
         <img id="category-image" :src="image" alt="">
         <p id="category-name">{{ categoryName }}</p>
         <p id="category-num">{{ num }} items</p>
     </div>
+  </router-link>
 </template>
 
 <script lang="ts">
@@ -36,9 +38,10 @@ export default {
 </script>
 
 <style scoped>
+    .card-link { text-decoration: none; }
     .card {
-        width: 100%;
-        max-width: 145px;
+        width: 110%;
+        max-width: 170px;
         height: 160px;
         display: flex;
         flex-direction: column;
@@ -64,8 +67,8 @@ export default {
         box-shadow: 0 0 0 2px #3BB77E, 0 10px 25px rgba(0, 0, 0, 0.1);
     }
     #category-image {
-        width: 90px;
-        height: 90px;
+        width: 105px;
+        height: 100px;
         margin-bottom: 5px;
     }
     #category-name {

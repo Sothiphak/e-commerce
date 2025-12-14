@@ -10,13 +10,12 @@
 }
 
 body {
-  /* Crucial Fix: Ensure body takes full height and removes complex centering */
   min-height: 100vh;
   /* Use 'block' display to allow content to flow naturally, overriding 'display: flex' on large screens */
-  display: block;
+  display: flex;
   line-height: 1.6;
   font-weight: normal;
-  background-color: #f8f8f8; /* Set background to light gray */
+  background-color: white; /* Set background to light gray */
 }
 
 #app {
@@ -54,7 +53,7 @@ a,
 
   #app {
     display: flex;
-    width: 100%;
+    width: 110%;
     height: 100%;
   }
 

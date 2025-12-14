@@ -11,7 +11,6 @@
         props: {
             buttonbgColor: {
                 type: String,
-                // Changed default to the vibrant green color from the image
                 default: '#3BB77E',
                 required: true
             }

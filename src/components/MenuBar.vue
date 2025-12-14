@@ -30,7 +30,7 @@ export default defineComponent({
 <style scoped>
 
 .menu-bar {
-  width: 110%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,7 +57,6 @@ h2 {
 .tabs span.active, .tabs span:hover {
   color: #3bb77e;
 }
-/* Responsive: Hide tabs on very small screens if needed */
 @media (max-width: 768px) {
   .tabs { display: none; }
 }
