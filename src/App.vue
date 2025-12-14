@@ -36,6 +36,7 @@
         :size="product.size"
         :price="product.price"
         :promotionAsPercentage="product.promotionAsPercentage"
+        :countSold="product.countSold"
         :image="product.image"
         :clicked="index === 0"
         :index="index"
@@ -119,11 +120,10 @@ export default defineComponent({
   .banner_display {
     width: 110%;
     display: flex;
-    justify-content: space-between; /* Ensures they spread out */
+    justify-content: space-between;
     gap: 24px;
     margin-top: 30px;
     margin-bottom: 60px;
-    /* Important: Keeps them in one row on wider screens */
     flex-direction: row;
   }
 
@@ -133,7 +133,7 @@ export default defineComponent({
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 25px;
+    gap: 23px;
     margin-bottom: 50px;
   }
 </style>
